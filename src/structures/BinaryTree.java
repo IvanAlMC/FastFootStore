@@ -141,9 +141,9 @@ public class BinaryTree<T> implements Iterable<T>{
 	
 	public String showPreOrder() {
 		List<T> list = getPreOrder();
-		String string = "-";
+		String string = "";
 		for(T data: list) {
-			string += data + "-";
+			string += data ;
 		}
 		return string;
 	}
@@ -174,9 +174,9 @@ public class BinaryTree<T> implements Iterable<T>{
 	
 	public String showInOrder() {
 		List<T> list = getInOrder();
-		String string = "-";
+		String string = "";
 		for(T data: list) {
-			string += data + "-";
+			string += data;
 		}
 		return string;
 	}
@@ -199,9 +199,9 @@ public class BinaryTree<T> implements Iterable<T>{
 	
 	public String showPostOrder() {
 		List<T> list = getPostOrder();
-		String string = "-";
+		String string = "";
 		for(T data: list) {
-			string += data + "-";
+			string += data ;
 		}
 		return string;
 	}

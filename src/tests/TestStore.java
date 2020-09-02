@@ -1,7 +1,5 @@
 package tests;
 
-import models.Bill;
-import models.Product;
 import models.Store;
 
 public class TestStore {
@@ -17,7 +15,7 @@ public class TestStore {
 		store.createProduct("Ensalada fruta normal", 3500.0, "grande", 9.0);
 		store.createProduct("Hamburguesa pequeña", 5000.0, "pequeña", 7.0);
 		System.out.println(store.showListProducts());
-		store.deleteProduct(new Product("Hamburguesa pequeña", 0, null, 0));
+		store.deleteProduct("Hamburguesa pequeña");
 		System.out.println("Se chingo la hamburguesa pequeña");
 		System.out.println(store.showListProducts());
 		
@@ -33,11 +31,11 @@ public class TestStore {
 		store.addProductBill(13, "Batido de fresa mediano");
 		store.addProductBill(13, "Ensalada verdura normal");
 		
-		System.out.println(store.showBill(new Bill(0, 13, null)));
+		System.out.println(store.showBill(13));
 		
 		System.out.println("borra producto factura");
 		store.deleteProductBill(13, "Ensalada verdura normal");
-		System.out.println(store.showBill(new Bill(0, 13, null)));
+		System.out.println(store.showBill(13));
 		
 		System.out.println("su pedido tarda en hacerse: " + store.seeTimeLeft(13) + " minutos");
 		

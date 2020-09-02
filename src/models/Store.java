@@ -22,10 +22,17 @@ public class Store {
 	}
 	
 	public Product addProduct(Product product) {
+		
 		return products.getData(product);
 	}
 	
-	public void deleteProduct(Product product) {
+	public void deleteProduct(String name) {
+		Product product = null;
+		for(Product p: products.getInOrder()) {
+			if(p.getName()==name) {
+				product = p;
+			}
+		}
 		products.delete(product);
 	}
 	
@@ -40,8 +47,14 @@ public class Store {
 		bills.poll();
 	}
 	
-	public String showBill(Bill bill) {
-		return bills.search(bill).showDatas();
+	public String showBill(int id) {
+		Bill bill = null;
+		for(Bill b: bills) {
+			if(b.getId()==id) {
+				bill = b;
+			}
+		}
+		return bill.showDatas();
 	}
 	
 	public String showListProducts(){
@@ -87,18 +100,6 @@ public class Store {
 	
 	public String showClientsToAttend() {
 		return bills.show();
-	}
-	
-	public boolean acceptOrder() {
-		boolean flag = false;
-		
-		return flag;
-	}
-	
-	public boolean registrySucessfulSale() {
-		boolean flag = false;
-		
-		return flag;
 	}
 	
 	public String showClientsAttend() {

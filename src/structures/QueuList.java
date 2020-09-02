@@ -98,7 +98,7 @@ public class QueuList<T> implements Iterable<T>{
 			}else {
 				QueuNode<T> aux = head;
 				while(aux!=null) {
-					string += aux.getData() + "-";
+					string += aux.getData();
 					aux = aux.getNext();
 				}
 			}
