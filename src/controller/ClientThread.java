@@ -15,7 +15,8 @@ public class ClientThread extends Thread{
 		this.socket=socket;
 		this.store =store;
 		output= new DataOutputStream(socket.getOutputStream());
-		input = new DataInputStream(socket.getInputStream());
+		input = new DataInputStream(socket.getInputStream()); 
+		System.out.println("prueba");
 	}
 	public void run () {
 	
