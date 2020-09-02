@@ -13,7 +13,7 @@ public class Product {
 		this.size = size;
 		this.timeToCook = timeToCook;
 	}
-
+  
 	public String getName() {
 		return name;
 	}
