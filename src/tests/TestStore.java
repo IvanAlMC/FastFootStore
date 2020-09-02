@@ -1,5 +1,6 @@
 package tests;
 
+import models.Bill;
 import models.Product;
 import models.Store;
 
@@ -26,5 +27,34 @@ public class TestStore {
 		store.addClient("el jaime", 17);
 		store.addClient("el ivan", 18);
 		System.out.println(store.showClientsToAttend());
+		System.out.println("datos factura");
+		store.addProductBill(13, "Papas fritas pequeñas");
+		store.addProductBill(13, "Hamburguesa grande");
+		store.addProductBill(13, "Batido de fresa mediano");
+		store.addProductBill(13, "Ensalada verdura normal");
+		
+		System.out.println(store.showBill(new Bill(0, 13, null)));
+		
+		System.out.println("borra producto factura");
+		store.deleteProductBill(13, "Ensalada verdura normal");
+		System.out.println(store.showBill(new Bill(0, 13, null)));
+		
+		System.out.println("su pedido tarda en hacerse: " + store.seeTimeLeft(13) + " minutos");
+		
+		System.out.println("su turno es: " + store.getTurn(13));
+		
+		store.addProductBill(12, "Papas fritas pequeñas");
+		store.addProductBill(12, "Hamburguesa grande");
+		
+		
+		store.attendClient();
+		store.attendClient();
+		System.out.println("clientes por atender:");
+		System.out.println(store.showClientsToAttend());
+		System.out.println("clientes atendidos:");
+		System.out.println(store.showClientsAttend());
+		
+		System.out.println("total ventas:");
+		System.out.println(store.calculateSales());
 	}
 }

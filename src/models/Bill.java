@@ -1,8 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import structures.BinaryTree;
 
 public class Bill {
@@ -19,8 +16,8 @@ public class Bill {
 		this.order = new BinaryTree<Product>(new ComparatorProduct());
 	}
 	
-	public Product addProduct(Product product) {
-		return order.getData(product);
+	public void addProduct(Product product) {
+		order.insert(product);;
 	}
 	
 	public void deleteProduct(Product product) {
@@ -29,8 +26,7 @@ public class Bill {
 	
 	public double calculateValue() {
 		double totalSales = 0;
-		List<Product> list = new ArrayList<Product>();
-		for(Product product: list) {
+		for(Product product: order.getInOrder()) {
 			totalSales += product.getPrice();
 		}
 		return totalSales;
@@ -38,8 +34,7 @@ public class Bill {
 	
 	public double calculateTime() {
 		double totalTime = 0;
-		List<Product> list = new ArrayList<Product>();
-		for(Product product: list) {
+		for(Product product: order.getInOrder()) {
 			totalTime += product.getTimeToCook();
 		}
 		return totalTime;
@@ -67,6 +62,15 @@ public class Bill {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String showDatas() {
+		String string = "";
+		for(Product product: order.getInOrder()) {
+			string += product.toString();
+		}
+		string += "\n Total = " + calculateValue();
+		return string;
 	}
 
 	@Override

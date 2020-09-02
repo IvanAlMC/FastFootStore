@@ -16,7 +16,7 @@ public class BinaryTree<T> implements Iterable<T>{
 	
 	public T getData(T key) {
 	      return search(key, root);
-	    }
+	}
 	
 	public T search(T key, Node<T> nodo) {
 	      if (nodo==null) {

@@ -13,13 +13,15 @@ public class QueuList<T> implements Iterable<T>{
 	}
 	
 	public T search(T data) {
-		QueuNode<T> pointer = head;
+		boolean exist = false;
 		T myData = null;
-		while(pointer!=null) {
-			if(comparator.compare(pointer.getData(), data)==0) {
-				myData = pointer.getData();
+		QueuNode<T> aux = head;
+		while(aux!=null && !exist) {
+			if(comparator.compare(aux.getData(), data)==0) {
+				exist = true;
+				myData = aux.getData();
 			}else {
-				pointer.getNext();
+				aux = aux.getNext();
 			}
 		}
 		return myData;
