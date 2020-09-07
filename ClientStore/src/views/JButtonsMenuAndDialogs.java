@@ -72,6 +72,13 @@ public class JButtonsMenuAndDialogs extends JButton{
             }
         });
     } 
+    
+    public JButtonsMenuAndDialogs(String text, int width, int heigth) {
+    	setText(text);
+        setFont(new Font(MyMessage.FONT_RUBIK,Font.BOLD, 14));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+        setPreferredSize(new Dimension(width, heigth));
+    }
 	
     private static Icon convertToIcon(String route) {
     	ImageIcon icon = new ImageIcon(route);

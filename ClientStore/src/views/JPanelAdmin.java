@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import views.north.JPanelNorthAdmin;
+
 public class JPanelAdmin extends JPanel{
 
 	public static final int WIDTH_SCREEN = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;

@@ -110,7 +110,7 @@ public class ClientStore implements ActionListener {
 		new ClientStore().run();
 	}
 
-	@SuppressWarnings("incomplete-switch")
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (Commands.valueOf(e.getActionCommand())) {
@@ -123,7 +123,53 @@ public class ClientStore implements ActionListener {
     	case CLIENT:
     		framePpal.showClientPanel();
     		break;
-		}
-		
+    	case CREATE_PRODUCT:
+    		openDialogCreate();
+    		break;
+    	case DELETE_PRODUCT:
+    		openDialogDelete();
+    		break;
+    	case ADD_PRODUCT:
+    		openDialogAdd();
+    		break;
+    	case REGISTER:
+    		openDialogRegister();
+    		break;
+    	default:
+    		break;
+		}	
 	}
+	
+	private void openDialogRegister() {
+		framePpal.openDialogRegister();
+	}
+	
+	private void closeDialogRegister() {
+		framePpal.closeDialogRegister();
+	}
+	
+	private void openDialogCreate() {
+		framePpal.openDialogCreate();
+	}
+	
+	private void closeDialogCreate() {
+		framePpal.closeDialogCreate();
+	}
+	
+	private void openDialogAdd() {
+		framePpal.openDialogAdd();
+	}
+	
+	private void closeDialogAdd() {
+		framePpal.closeDialogAdd();
+	}
+	
+	private void openDialogDelete() {
+		framePpal.openDialogDelete();
+	}
+	
+	private void closeDialogDelete() {
+		framePpal.closeDialogDelete();
+	}
+
 }

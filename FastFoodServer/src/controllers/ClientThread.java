@@ -45,6 +45,7 @@ public class ClientThread extends Thread {
 			System.out.println("recibido ... " + message);
 			boolean exit = false;
 			int optionAC = input.read();
+			output.writeUTF(store.showListProducts());
 			do {
 				if (optionAC == 1) {
 					do {

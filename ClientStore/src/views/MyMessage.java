@@ -51,5 +51,12 @@ public class MyMessage {
 	public static final String SEE_TURN ="Ver Turno";
 	public static final String SEE_TIME ="Ver Tiempo";
 	public static final String WELCOME ="Bienvenidos                            ";
+	public static final String ACCEPT ="Aceptar";
+	public static final String CANCEL ="Cancelar";
+	public static final String EMPTY ="";
+	public static final String DELETE ="Borrar";
+	public static final String ADD ="Agregar";
+	public static final String REGISTER ="Registrarse";
+	public static final String REGISTER_PATH ="Resources/resgiter.png";
 
 }
