@@ -23,13 +23,12 @@ public class Store {
 	}
 	
 	public void deleteProduct(String name) {
-		Product product = null;
-		for(Product p: products.getInOrder()) {
-			if(p.getName()==name) {
-				product = p;
+		List<Product> list = products.getInOrder();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getName().equals(name)) {
+				products.delete(list.get(i));
 			}
 		}
-		products.delete(product);
 	}
 	
 	public void addClient(String nameOwnerBill, int id) {

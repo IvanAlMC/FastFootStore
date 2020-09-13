@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import controllers.Commands;
+import controllers.Actions;
 
 public class JPanelPpal extends JPanel{
 	
@@ -22,7 +22,7 @@ public class JPanelPpal extends JPanel{
 
 	public JPanelPpal(ActionListener actionListener) {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(WIDTH_SCREEN-25, 500));
+		setPreferredSize(new Dimension(WIDTH_SCREEN-25, HEIGHT_SCREEN-310));
 		FlowLayout flowLayout=new FlowLayout(FlowLayout.CENTER);
 		flowLayout.setHgap(30);
 		setLayout(flowLayout); 
@@ -37,14 +37,14 @@ public class JPanelPpal extends JPanel{
 		panel.setBackground(Color.WHITE);
 		panel.add(icon);
 		this.add(panel, BorderLayout.NORTH);
-		admin = new JButtonsMenuAndDialogs(MyMessage.ADMIN, MyMessage.ADMIN_PATH, 300);
-		admin.addActionListener(actionListener);
-    	admin.setActionCommand(Commands.ADMIN.toString());
+		admin = new JButtonsMenuAndDialogs(MyMessage.ADMIN, MyMessage.ADMIN_PATH, 300, actionListener, Actions.ADMIN);
 		this.add(admin);
-		client = new JButtonsMenuAndDialogs(MyMessage.CLIENT, MyMessage.CLIENT_PATH, 300);
-		client.addActionListener(actionListener);
-    	client.setActionCommand(Commands.CLIENT.toString());
+		client = new JButtonsMenuAndDialogs(MyMessage.CLIENT, MyMessage.CLIENT_PATH, 300, actionListener, Actions.CLIENT);
 		this.add(client);
+	}
+	
+	public void getOptionPanel() {
+		
 	}
 
 }

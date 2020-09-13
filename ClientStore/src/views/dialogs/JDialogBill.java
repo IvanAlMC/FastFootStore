@@ -20,19 +20,19 @@ import views.JTextFieldDialog;
 import views.MyJFramePpal;
 import views.MyMessage;
 
-public class JDialogDelete extends JDialog {
+public class JDialogBill extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private JTextFieldDialog productName, cc;
-	private JButtonsMenuAndDialogs buttonDelete, buttonCancel;
+	private JTextFieldDialog cc;
+	private JButtonsMenuAndDialogs buttonAccept, buttonCancel;
 
-	public JDialogDelete(MyJFramePpal frame, ActionListener actionListener) {
-		setMinimumSize(new Dimension(350, 250));
+	public JDialogBill(MyJFramePpal frame, ActionListener actionListener) {
+		setMinimumSize(new Dimension(350, 180));
 		getContentPane().setBackground(new Color(40, 40, 40));
 		setBackground(new Color(35, 35, 35));
-		setIconImage(new ImageIcon(MyMessage.DELETE_PATH).getImage());
+		setIconImage(new ImageIcon(MyMessage.BILL_PATH).getImage());
 		setLocationRelativeTo(frame);
-		setTitle(MyMessage.DELETE_PRODUCT);
+		setTitle(MyMessage.SEE_BILL);
 		getRootPane().setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		setModal(true);
 		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -41,12 +41,12 @@ public class JDialogDelete extends JDialog {
 
 	private void initComponents(ActionListener actionListener) {
 		addTextField();
-		addButtonsDelete(actionListener);
+		addButtons(actionListener);
 	}
 
 	private void addTextField() {
 		Panel panel = new Panel();
-		panel.setPreferredSize(new Dimension(340, 130));
+		panel.setPreferredSize(new Dimension(340, 60));
 		cc = new JTextFieldDialog(MyMessage.IN_CC);
 		cc.setForeground(Color.WHITE);
 		cc.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
@@ -54,25 +54,18 @@ public class JDialogDelete extends JDialog {
 		cc.setBackground(new Color(90, 90, 90));
 		cc.setPreferredSize(new Dimension(250, 50));
 		panel.add(cc);
-		productName = new JTextFieldDialog(MyMessage.IN_NAME_PRODUCT);
-		productName.setForeground(Color.WHITE);
-		productName.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
-		productName.setHorizontalAlignment(JTextField.RIGHT);
-		productName.setBackground(new Color(90, 90, 90));
-		productName.setPreferredSize(new Dimension(250, 50));
-		panel.add(productName);
 		add(panel);
 	}
 
-	private void addButtonsDelete(ActionListener actionListenner) {
+	private void addButtons(ActionListener actionListenner) {
 		JPanel panelButtons = createPanel(10);
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
-		buttonDelete = new JButtonsMenuAndDialogs(MyMessage.DELETE, 120, 35, actionListenner, Actions.ACCEPT_DELETE);
-		buttonDelete.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
-		buttonDelete.setBackground(Color.RED);
-		buttonDelete.setForeground(Color.WHITE);
-		panelButtons.add(buttonDelete);
-		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 35, actionListenner, Actions.CANCEL_DELETE);
+		buttonAccept = new JButtonsMenuAndDialogs(MyMessage.ACCEPT, 120, 35, actionListenner, Actions.ACCEPT_CC_BILL);
+		buttonAccept.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
+		buttonAccept.setBackground(Color.GREEN);
+		buttonAccept.setForeground(Color.WHITE);
+		panelButtons.add(buttonAccept);
+		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 35, actionListenner, Actions.CANCEL_CC_BILL);
 		buttonCancel.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonCancel.setBackground(Color.orange);
 		buttonCancel.setForeground(Color.WHITE);
@@ -90,14 +83,10 @@ public class JDialogDelete extends JDialog {
 	}
 
 	public void clearComponents() {
-		productName.setText("");
+		cc.setText("");
 	}
-
-	public String getNameProduct() {
-		return productName.getText();
-	}
-
-	public int getCCDelete() {
+	
+	public int getCC() {
 		return Integer.parseInt(cc.getText());
 	}
 

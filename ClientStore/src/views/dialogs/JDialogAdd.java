@@ -10,13 +10,11 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controllers.Commands;
+import controllers.Actions;
 import views.JButtonsMenuAndDialogs;
 import views.JTextFieldDialog;
 import views.MyJFramePpal;
@@ -25,13 +23,11 @@ import views.MyMessage;
 public class JDialogAdd extends JDialog{
 
 	private static final long serialVersionUID = 1L;
-	private JTextFieldDialog productName;
+	private JTextFieldDialog productName, cc;
     private JButtonsMenuAndDialogs buttonAccept, buttonCancel;
-    private JComboBox<String> products;
-    private JLabel productslL;
 
 	public JDialogAdd(MyJFramePpal frame, ActionListener actionListener) {
-		setMinimumSize(new Dimension(350,180));
+		setMinimumSize(new Dimension(350,250));
 		getContentPane().setBackground(new Color(40, 40, 40));
 		setBackground(new Color(35, 35, 35));
 		setIconImage(new ImageIcon(MyMessage.ADD_PATH).getImage());
@@ -48,31 +44,16 @@ public class JDialogAdd extends JDialog{
         addButtons(actionListener);
     }
 	
-	private void addJComboBoxSpecies() {
-    	Panel panel = new Panel();
-    	panel.setPreferredSize(new Dimension(450,50));
-	    panel.setBackground(new Color(40, 40, 40));
-	    FlowLayout flowLayout=new FlowLayout(FlowLayout.CENTER);
-		flowLayout.setHgap(2);
-		panel.setLayout(flowLayout);
-    	productslL = createLabel(MyMessage.IN_NAME_PRODUCT);
-    	productslL.setForeground(Color.WHITE);
-    	productslL.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 14));
-    	products = new JComboBox<String>();
-       	products.setPreferredSize(new Dimension(380,30));
-    	products.setBackground(Color.WHITE);
-    	products.setForeground(Color.WHITE);
-    	products.setBackground(new Color(90, 90, 90));
-    	products.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 14));
-    	products.setFocusable(false);
-    	panel.add(productslL);
-    	panel.add(products);
-    	add(panel);
-    }
-	
     private void addTextField() {
     	Panel panel = new Panel();
-   	 	panel.setPreferredSize(new Dimension(340,60));
+    	panel.setPreferredSize(new Dimension(340,130));
+    	cc = new JTextFieldDialog(MyMessage.IN_CC);
+    	cc.setForeground(Color.WHITE);
+    	cc.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
+    	cc.setHorizontalAlignment(JTextField.RIGHT);
+    	cc.setBackground(new Color(90, 90, 90));
+    	cc.setPreferredSize(new Dimension(250,50));
+    	panel.add(cc);
     	productName = new JTextFieldDialog(MyMessage.IN_NAME_PRODUCT);
     	productName.setForeground(Color.WHITE);
     	productName.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
@@ -86,30 +67,17 @@ public class JDialogAdd extends JDialog{
     private void addButtons(ActionListener actionListenner) {
     	JPanel panelButtons = createPanel(10);
     	panelButtons.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
-		buttonAccept = new JButtonsMenuAndDialogs(MyMessage.ACCEPT,120,35);
-		buttonAccept.addActionListener(actionListenner);
-		buttonAccept.setActionCommand(Commands.ADD.toString());
+		buttonAccept = new JButtonsMenuAndDialogs(MyMessage.ACCEPT,120,35, actionListenner, Actions.ACCEPT_ADD);
 		buttonAccept.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonAccept.setBackground(Color.GREEN);
 		buttonAccept.setForeground(Color.WHITE);
 		panelButtons.add(buttonAccept);
-		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL,120,35);
-		buttonCancel.addActionListener(actionListenner);
-		buttonCancel.setActionCommand(Commands.CANCEL_D.toString());
+		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL,120,35, actionListenner, Actions.CANCEL_ADD);
 		buttonCancel.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
     	buttonCancel.setBackground(Color.orange);
     	buttonCancel.setForeground(Color.WHITE);
 		panelButtons.add(buttonCancel);
 		add(panelButtons);
-    }
-    
-    private JLabel createLabel(String text) {
-    	JLabel label = new JLabel("<html><b>" +text +"</b></html>");
-    	label.setForeground(Color.BLACK);
-    	label.setAlignmentX(RIGHT_ALIGNMENT);
-    	label.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 14));
-    	label.setOpaque(false);
-    	return label;
     }
     
     private JPanel createPanel(int separation) {
@@ -123,6 +91,14 @@ public class JDialogAdd extends JDialog{
 	
     public void clearComponents() {
     	productName.setText("");
+    }
+    
+    public String getNameProduct() {
+    	return productName.getText();
+    }
+    
+    public int getCCAdd() {
+    	return Integer.parseInt(cc.getText());
     }
 
 }

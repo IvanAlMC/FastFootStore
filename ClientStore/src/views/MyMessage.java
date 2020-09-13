@@ -37,6 +37,7 @@ public class MyMessage {
 	public static final String BILL_PATH ="Resources/Bill.png";
 	public static final String TURN_PATH ="Resources/Turn.png";
 	public static final String TIME_PATH ="Resources/Time.png";
+	public static final String BACK_PATH ="Resources/back.png";
 	public static final String LOGO ="Resources/Shot.png";
 	public static final String ADMIN_PATH ="Resources/admin.png";
 	public static final String CLIENT_PATH ="Resources/client.png";

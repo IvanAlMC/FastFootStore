@@ -75,7 +75,7 @@ public class Bill {
 
 	@Override
 	public String toString() {
-		return "Factura: nombre: " + nameOwnerBill + " turno: " + turn + " id: " + id + "\n";
+		return  nameOwnerBill + " : " + turn + " : " + id + "\n";
 	}
 
 }

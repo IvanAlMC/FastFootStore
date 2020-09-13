@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,9 +21,12 @@ public class JButtonsMenuAndDialogs extends JButton{
     public static final int DIMENSION_WHIDTH = 180;
     public static final int DIMENSION_HEIGHT = 100;
     private JButton button;
+    private String actionCommand;
 	
-    public JButtonsMenuAndDialogs(String text, String routeImage) {
+    public JButtonsMenuAndDialogs(String text, String routeImage, ActionListener actionListener, String actionCommand) {
         setText(text);   
+        setActionCommand(actionCommand);
+        addActionListener(actionListener);
         setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 12));
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);
@@ -47,8 +51,18 @@ public class JButtonsMenuAndDialogs extends JButton{
         });
     } 
     
-    public JButtonsMenuAndDialogs(String text, String routeImage, int large) {
+    public String getActionCommand() {
+		return actionCommand;
+	}
+
+	public void setActionCommand(String actionCommand) {
+		this.actionCommand = actionCommand;
+	}
+
+	public JButtonsMenuAndDialogs(String text, String routeImage, int large, ActionListener actionListener, String actionCommand) {
         setText(text);   
+        setActionCommand(actionCommand);
+        addActionListener(actionListener);
         setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 12));
         setBackground(Color.WHITE);
         setForeground(Color.BLACK);
@@ -73,8 +87,10 @@ public class JButtonsMenuAndDialogs extends JButton{
         });
     } 
     
-    public JButtonsMenuAndDialogs(String text, int width, int heigth) {
+    public JButtonsMenuAndDialogs(String text, int width, int heigth, ActionListener actionListener, String actionCommand) {
     	setText(text);
+    	setActionCommand(actionCommand);
+        addActionListener(actionListener);
         setFont(new Font(MyMessage.FONT_RUBIK,Font.BOLD, 14));
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setPreferredSize(new Dimension(width, heigth));

@@ -206,8 +206,6 @@ public class BinaryTree<T> implements Iterable<T>{
 		return string;
 	}
 	
-	
-	
 	public void delete(T data) {
 		root = deleteNode(root, data);
 	}

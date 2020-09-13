@@ -20,13 +20,13 @@ import views.JTextFieldDialog;
 import views.MyJFramePpal;
 import views.MyMessage;
 
-public class JDialogDelete extends JDialog {
+public class JDialogDeleteMenu extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private JTextFieldDialog productName, cc;
+	private JTextFieldDialog productName;
 	private JButtonsMenuAndDialogs buttonDelete, buttonCancel;
 
-	public JDialogDelete(MyJFramePpal frame, ActionListener actionListener) {
+	public JDialogDeleteMenu(MyJFramePpal frame, ActionListener actionListener) {
 		setMinimumSize(new Dimension(350, 250));
 		getContentPane().setBackground(new Color(40, 40, 40));
 		setBackground(new Color(35, 35, 35));
@@ -47,13 +47,6 @@ public class JDialogDelete extends JDialog {
 	private void addTextField() {
 		Panel panel = new Panel();
 		panel.setPreferredSize(new Dimension(340, 130));
-		cc = new JTextFieldDialog(MyMessage.IN_CC);
-		cc.setForeground(Color.WHITE);
-		cc.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
-		cc.setHorizontalAlignment(JTextField.RIGHT);
-		cc.setBackground(new Color(90, 90, 90));
-		cc.setPreferredSize(new Dimension(250, 50));
-		panel.add(cc);
 		productName = new JTextFieldDialog(MyMessage.IN_NAME_PRODUCT);
 		productName.setForeground(Color.WHITE);
 		productName.setFont(new Font(MyMessage.FONT_RUBIK, Font.ITALIC, 18));
@@ -67,12 +60,12 @@ public class JDialogDelete extends JDialog {
 	private void addButtonsDelete(ActionListener actionListenner) {
 		JPanel panelButtons = createPanel(10);
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
-		buttonDelete = new JButtonsMenuAndDialogs(MyMessage.DELETE, 120, 35, actionListenner, Actions.ACCEPT_DELETE);
+		buttonDelete = new JButtonsMenuAndDialogs(MyMessage.DELETE, 120, 35, actionListenner, Actions.ACCEPT_ERASE);
 		buttonDelete.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonDelete.setBackground(Color.RED);
 		buttonDelete.setForeground(Color.WHITE);
 		panelButtons.add(buttonDelete);
-		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 35, actionListenner, Actions.CANCEL_DELETE);
+		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 35, actionListenner, Actions.CANCEL_ERASE);
 		buttonCancel.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonCancel.setBackground(Color.orange);
 		buttonCancel.setForeground(Color.WHITE);
@@ -96,9 +89,4 @@ public class JDialogDelete extends JDialog {
 	public String getNameProduct() {
 		return productName.getText();
 	}
-
-	public int getCCDelete() {
-		return Integer.parseInt(cc.getText());
-	}
-
 }

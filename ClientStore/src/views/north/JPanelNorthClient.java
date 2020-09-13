@@ -10,10 +10,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import controllers.Commands;
+import controllers.Actions;
 import views.IconLabel;
 import views.JButtonsMenuAndDialogs;
 import views.MyMessage;
+import views.body.JPanelBody;
 
 public class JPanelNorthClient extends JPanel{
 	
@@ -23,6 +24,7 @@ public class JPanelNorthClient extends JPanel{
 	public static final int HEIGHT_SCREEN = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 	private JButtonsMenuAndDialogs register, list, add, delete, bill,time, turn;
 	private IconLabel icon;
+	private JPanelBody body;
 	
 	public JPanelNorthClient(ActionListener actionListener) {
 		setBackground(Color.BLACK);
@@ -44,35 +46,24 @@ public class JPanelNorthClient extends JPanel{
 		panel.setBackground(Color.BLACK);
 		panel.add(icon);
 		add(panel, BorderLayout.NORTH);
-		register = new JButtonsMenuAndDialogs(MyMessage.REGISTER, MyMessage.REGISTER_PATH);
-		register.addActionListener(actionListener);
-    	register.setActionCommand(Commands.REGISTER.toString());
+		register = new JButtonsMenuAndDialogs(MyMessage.REGISTER, MyMessage.REGISTER_PATH, actionListener, Actions.REGISTER);
     	add(register);
-		list = new JButtonsMenuAndDialogs(MyMessage.MENU_PRODUCTS, MyMessage.MENU_PATH);
-		list.addActionListener(actionListener);
-    	list.setActionCommand(Commands.SHOW_LIST.toString());
+		list = new JButtonsMenuAndDialogs(MyMessage.MENU_PRODUCTS, MyMessage.MENU_PATH, actionListener, Actions.SHOW_LIST);
     	add(list);
-    	add = new JButtonsMenuAndDialogs(MyMessage.ADD_PRODUCT, MyMessage.ADD_PATH);
-		add.addActionListener(actionListener);
-    	add.setActionCommand(Commands.ADD_PRODUCT.toString());
+    	add = new JButtonsMenuAndDialogs(MyMessage.ADD_PRODUCT, MyMessage.ADD_PATH, actionListener, Actions.ADD_PRODUCT);
     	add(add);
-    	delete = new JButtonsMenuAndDialogs(MyMessage.DELETE_PRODUCT, MyMessage.DELETE_PATH);
-		delete.addActionListener(actionListener);
-    	delete.setActionCommand(Commands.DELETE_PRODUCT.toString());
+    	delete = new JButtonsMenuAndDialogs(MyMessage.DELETE_PRODUCT, MyMessage.DELETE_PATH, actionListener, Actions.DELETE_PRODUCT);
     	add(delete);
-    	bill = new JButtonsMenuAndDialogs(MyMessage.SEE_BILL, MyMessage.BILL_PATH);
-		bill.addActionListener(actionListener);
-    	bill.setActionCommand(Commands.BILL.toString());
+    	bill = new JButtonsMenuAndDialogs(MyMessage.SEE_BILL, MyMessage.BILL_PATH, actionListener, Actions.BILL);
     	add(bill);
-    	turn = new JButtonsMenuAndDialogs(MyMessage.SEE_TURN, MyMessage.TURN_PATH);
-		turn.addActionListener(actionListener);
-    	turn.setActionCommand(Commands.SEE_TURN.toString());
+    	turn = new JButtonsMenuAndDialogs(MyMessage.SEE_TURN, MyMessage.TURN_PATH, actionListener, Actions.TURN);
     	add(turn);
-    	time = new JButtonsMenuAndDialogs(MyMessage.SEE_TIME, MyMessage.TIME_PATH);
-		time.addActionListener(actionListener);
-    	time.setActionCommand(Commands.SEE_TURN.toString());
+    	time = new JButtonsMenuAndDialogs(MyMessage.SEE_TIME, MyMessage.TIME_PATH, actionListener, Actions.TIME);
     	add(time);
-    	
+    	body = new JPanelBody();
+		body.setPreferredSize(new Dimension(WIDTH_SCREEN-25, HEIGHT_SCREEN-280));
+		this.add(body, BorderLayout.CENTER);
+		body.setVisible(true);
 	}
 
 }

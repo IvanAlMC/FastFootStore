@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import controllers.Commands;
+import controllers.Actions;
 import views.JButtonsMenuAndDialogs;
 import views.JTextFieldDialog;
 import views.MyJFramePpal;
@@ -76,16 +76,12 @@ public class JDialogCreate extends JDialog {
 	private void addButtons(ActionListener actionListenner) {
 		JPanel panelButtons = createPanel(10);
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
-		buttonAccept = new JButtonsMenuAndDialogs(MyMessage.ACCEPT, 120, 60);
-		buttonAccept.addActionListener(actionListenner);
-		buttonAccept.setActionCommand(Commands.ACCEPT.toString());
+		buttonAccept = new JButtonsMenuAndDialogs(MyMessage.ACCEPT, 120, 60, actionListenner, Actions.ACCEPT_CREATE);
 		buttonAccept.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonAccept.setBackground(Color.GREEN);
 		buttonAccept.setForeground(Color.WHITE);
 		panelButtons.add(buttonAccept);
-		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 60);
-		buttonCancel.addActionListener(actionListenner);
-		buttonCancel.setActionCommand(Commands.CANCEL.toString());
+		buttonCancel = new JButtonsMenuAndDialogs(MyMessage.CANCEL, 120, 60, actionListenner, Actions.CANCEL_CREATE);
 		buttonCancel.setFont(new Font(MyMessage.FONT_RUBIK, Font.BOLD, 14));
 		buttonCancel.setBackground(Color.RED);
 		buttonCancel.setForeground(Color.WHITE);
@@ -98,5 +94,21 @@ public class JDialogCreate extends JDialog {
 		price.setText(MyMessage.EMPTY);
 		size.setText(MyMessage.EMPTY);
 		time.setText(MyMessage.EMPTY);
+	}
+	
+	public String getNameProduct() {
+		return name.getText();
+	}
+	
+	public double getPrice() {
+		return Double.parseDouble(price.getText());
+	}
+	
+	public String getSizeP() {
+		return size.getText();
+	}
+	
+	public double getTime() {
+		return Double.parseDouble(time.getText());
 	}
 }
